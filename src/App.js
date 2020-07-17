@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import Home from "./Components/Home/Home";
+import Banner from "./Components/Banner/Banner";
+import Nav from "./Components/Nav/Nav";
+
+import requests from "./Services/RequestUrls";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="app">
+        <Nav />
+        <Banner />
+        <Home
+          title="NETFLIX ORIGINALS"
+          fetchUrl={requests.fetchNetflixOriginal}
+          isLargeImage
+        />
+        <Home title="Trending Now" fetchUrl={requests.fetchTrending} />
+        <Home title="Top Rated" fetchUrl={requests.fetchTopRated} />
+        <Home title="Action Movies" fetchUrl={requests.fetchActionMovie} />
+        <Home title="Comedy Movies" fetchUrl={requests.fetchComedyMovie} />
+        <Home title="Horror Movies" fetchUrl={requests.fetchHorrorMovie} />
+        <Home title="Romance Movies" fetchUrl={requests.fetchRomanceMovie} />
+        <Home title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      </div>
+    </Fragment>
   );
 }
 
